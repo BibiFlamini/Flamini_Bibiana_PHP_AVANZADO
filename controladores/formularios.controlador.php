@@ -58,9 +58,8 @@ class ControladorFormularios
 
             $respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla, $item, $valor);
 
-            if ($respuesta["email"] == $_POST["ingresoEmail"] && $respuesta["password"] == $_POST["ingresoPassword"]) {
-
-                $_SESSION["validarIngreso"] = "ok";
+            if ($respuesta["email"] == $_POST["ingresoEmail"] &&
+password_verify($_POST["ingresoPassword"], $respuesta["password"])) {
 
                 echo '<script>
 
